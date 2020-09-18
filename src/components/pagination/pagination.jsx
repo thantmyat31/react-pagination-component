@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PaginateItem from './paginate-item';
 
 import './pagination.css';
@@ -9,11 +9,24 @@ const Pagination = ({ total, onPaginate, currentPage, move, handleGoToEnd }) => 
 		pages.push(i);
 	}
 
+	const [ showLeftArrow, setShowLeftArrow ] = useState(false);
+	const [ showRightArrow, setShowRightArrow ] = useState(true);
+	useEffect(
+		() => {
+			setShowLeftArrow(currentPage > 3 ? true : false);
+			let estimatePage = total - 2;
+			setShowRightArrow(estimatePage > currentPage ? true : false);
+		},
+		[ currentPage, total ]
+	);
+
 	return (
 		<div className="pagination-container">
-			<span className="paginate-item-start" onClick={() => handleGoToEnd('start')}>
-				&#xab;
-			</span>
+			{showLeftArrow && (
+				<span className="paginate-item-start" onClick={() => handleGoToEnd('start')}>
+					&#xab;
+				</span>
+			)}
 			<div className="pagination">
 				<div className="paginate-item-wrapper" style={{ marginLeft: `-${move}` }}>
 					{pages ? (
@@ -23,9 +36,11 @@ const Pagination = ({ total, onPaginate, currentPage, move, handleGoToEnd }) => 
 					) : null}
 				</div>
 			</div>
-			<span className="paginate-item-end" onClick={() => handleGoToEnd('end')}>
-				&#xbb;
-			</span>
+			{showRightArrow && (
+				<span className="paginate-item-end" onClick={() => handleGoToEnd('end')}>
+					&#xbb;
+				</span>
+			)}
 		</div>
 	);
 };

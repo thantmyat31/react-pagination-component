@@ -60,9 +60,9 @@ class App extends React.Component {
 				</ul>
 				<Pagination
 					move={move}
-					onPaginate={this.handlePaginate}
 					total={total}
 					currentPage={page}
+					onPaginate={this.handlePaginate}
 					handleGoToEnd={this.handleGoToEnd}
 				/>
 			</div>
