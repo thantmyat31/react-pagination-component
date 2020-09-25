@@ -11,6 +11,7 @@ const Pagination = ({ total, onPaginate, currentPage, move, handleGoToEnd }) => 
 
 	const [ showLeftArrow, setShowLeftArrow ] = useState(false);
 	const [ showRightArrow, setShowRightArrow ] = useState(true);
+
 	useEffect(
 		() => {
 			setShowLeftArrow(currentPage > 3 ? true : false);
@@ -20,6 +21,14 @@ const Pagination = ({ total, onPaginate, currentPage, move, handleGoToEnd }) => 
 		[ currentPage, total ]
 	);
 
+	const handleOnReduce = () => {
+		onPaginate(currentPage - 1);
+	}
+
+	const handleOnIncrese = () => {
+		onPaginate(currentPage + 1);
+	}
+
 	return (
 		<div className="pagination-container">
 			{showLeftArrow && (
@@ -27,6 +36,10 @@ const Pagination = ({ total, onPaginate, currentPage, move, handleGoToEnd }) => 
 					&#xab;
 				</span>
 			)}
+			{currentPage > 1 && <span className="paginate-item-start" onClick={handleOnReduce}>
+				&#x2039;
+			</span>}
+
 			<div className="pagination">
 				<div className="paginate-item-wrapper" style={{ marginLeft: `-${move}` }}>
 					{pages ? (
@@ -36,6 +49,10 @@ const Pagination = ({ total, onPaginate, currentPage, move, handleGoToEnd }) => 
 					) : null}
 				</div>
 			</div>
+
+			{currentPage !== pages.length && <span className="paginate-item-end" onClick={handleOnIncrese}>
+				&#x203A;
+			</span>}
 			{showRightArrow && (
 				<span className="paginate-item-end" onClick={() => handleGoToEnd('end')}>
 					&#xbb;

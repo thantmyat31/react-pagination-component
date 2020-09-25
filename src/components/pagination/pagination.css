@@ -1,6 +1,7 @@
 .pagination-container {
-	width: 224px;
-	margin: 50px;
+	width: 288px;
+	margin-top: 50px;
+	margin-left:20px;
 }
 
 .pagination {
