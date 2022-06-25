@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import PaginateItem from './paginate-item';
+import BSStyledPaginationItem from './BSStyledPaginationItem';
 
-import './pagination.css';
+import './BSStyledPagination.css';
 
-const Pagination = ({ total, onPaginate, currentPage, move, handleGoToEnd }) => {
+const BSStyledPagination = ({ total, onPaginate, currentPage, move, handleGoToEnd }) => {
 	let pages = [];
 	for (let i = 1; i <= total; i++) {
 		pages.push(i);
@@ -44,7 +44,7 @@ const Pagination = ({ total, onPaginate, currentPage, move, handleGoToEnd }) => 
 				<div className="paginate-item-wrapper" style={{ marginLeft: `-${move}` }}>
 					{pages ? (
 						pages.map((page) => (
-							<PaginateItem currentPage={currentPage} onPaginate={onPaginate} key={page} page={page} />
+							<BSStyledPaginationItem currentPage={currentPage} onPaginate={onPaginate} key={page} page={page} />
 						))
 					) : null}
 				</div>
@@ -62,4 +62,4 @@ const Pagination = ({ total, onPaginate, currentPage, move, handleGoToEnd }) => 
 	);
 };
 
-export default Pagination;
+export default BSStyledPagination;

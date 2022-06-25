@@ -1,6 +1,7 @@
 import React from 'react';
+import './BSStyledPagination.css';
 
-const PaginateItem = ({ page, onPaginate, currentPage }) => {
+const BSStyledPaginationItem = ({ page, onPaginate, currentPage }) => {
 	return (
 		<span
 			className={page === currentPage ? 'paginate-item active' : 'paginate-item'}
@@ -11,4 +12,4 @@ const PaginateItem = ({ page, onPaginate, currentPage }) => {
 	);
 };
 
-export default PaginateItem;
+export default BSStyledPaginationItem;
