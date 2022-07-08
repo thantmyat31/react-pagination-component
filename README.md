@@ -21,6 +21,8 @@ npm install
 npm start
 ```
 
+# Deployment
+- Deployed on netlify as sample. Visit [here](https://paginate-component.netlify.app/).
 
 # Version
 
